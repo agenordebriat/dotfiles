@@ -1,0 +1,29 @@
+Host *
+	IdentityAgent ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+  IdentitiesOnly yes
+
+# GitHub agenor.debriat@me.com
+Host agenor.github.com
+  Hostname github.com
+  IdentityFile ~/.ssh/personal
+
+# GitLab agenor.debriat@me.com
+Host agenor.gitlab.com
+  Hostname gitlab.com
+  IdentityFile ~/.ssh/personal
+
+# GitLab agenor@ylly.fr
+Host ylly.gitlab.com
+  Hostname gitlab.com
+  IdentityFile ~/.ssh/work
+
+# GitLab Castelis
+Host castelis.gitlab.com
+  Hostname gitlab-azure.castelis.com
+  IdentityFile ~/.ssh/work
+
+# Ylly
+Host ylly-1
+  HostName dev.ylly.fr
+  User ylly
+  IdentityFile ~/.ssh/work

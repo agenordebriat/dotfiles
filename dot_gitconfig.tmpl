@@ -1,0 +1,54 @@
+[alias]
+  a = add .
+  bc = branch -a --contains
+  bcc = "!f() { git branch --show-current | pbcopy; }; f"
+  bd = "!f() { git branch | xargs git branch -D; }; f"
+  bsa = branch -a --sort=-committerdate
+  bs = branch --sort=-committerdate
+  c = commit -m
+  ca = commit --amend -m
+  can = commit --amend --no-edit
+  ch- = checkout -
+  chb = checkout -b
+  cp = cherry-pick
+  cpa = cherry-pick --abort
+  cpc = cherry-pick --continue
+  l = "!f() { git log --oneline --decorate --graph -n ${1-15}; }; f"
+  la = log --oneline --decorate --graph
+  ls = log --all --grep
+  m = merge
+  m- = merge -
+  ma = merge --abort
+  mc = merge --continue
+  p = add -N . && git add -p
+  pf = push --force-with-lease
+  pod = push origin --delete
+  r = rebase -i
+  ra = rebase --abort
+  rc = rebase --continue
+  rh = reset --hard
+  rs = reset --soft
+  s = status -sb
+  sb = show-branch --topics --sha1-name
+  stp = stash pop
+  stu = stash -u
+[core]
+  editor = code --wait
+  excludesfile = ~/.gitignore
+[credential]
+  helper = osxkeychain
+[fetch]
+  prune = true
+[init]
+  defaultBranch = main
+[pull]
+  rebase = true
+[push]
+  autoSetupRemote = true
+[user]
+  name = Agénor Debriat
+  {{- if eq .profile "personal"  }}
+  email = agenor.debriat@me.com
+  {{- else if eq .profile "work" }}
+  email = agenor@ylly.fr
+  {{- end }}

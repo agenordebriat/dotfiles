@@ -1,0 +1,21 @@
+add_newline = false
+command_timeout = 5000
+
+[character]
+success_symbol = "[](bold green) "
+error_symbol = "[](bold red) "
+
+[directory]
+read_only = " "
+
+[git_branch]
+symbol = " "
+
+[git_status]
+deleted = "X"
+
+[package]
+disabled = true
+
+[php]
+disabled = true
