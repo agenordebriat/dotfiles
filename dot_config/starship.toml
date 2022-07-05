@@ -1,0 +1,35 @@
+add_newline = false
+command_timeout	= 10000
+
+[character]
+success_symbol = "[](bold green) "
+error_symbol = "[](bold red) "
+
+[directory]
+read_only = " "
+
+[git_branch]
+symbol = " "
+
+[git_status]
+deleted = "X"
+
+[nodejs]
+disabled = true
+
+[package]
+disabled = true
+
+[php]
+disabled = true
+
+[custom.nodejs]
+when = "test -e package.json; and test (string sub -l 1 (pnpm node -v)) = 'v'"
+command = "string sub -s 2 (pnpm node -v)"
+format = "[ ($output) ]($style)"
+
+[custom.nodejs-warning]
+when = "test -e package.json; and string match '*wanted*node*' = (pnpm node -v)"
+command = "echo 'Wanted Node.js' (node -p 'require(\"./package.json\").engines.node') '(current:' (string sub -s 2 (pnpm node -v | sed -n '2 p'))')'"
+format = "[ ($output) ]($style)"
+style = "bg:yellow fg:black"

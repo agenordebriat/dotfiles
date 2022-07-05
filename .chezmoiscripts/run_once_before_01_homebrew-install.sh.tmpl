@@ -1,0 +1,54 @@
+#!/usr/bin/env zsh
+
+formulae=(
+  bat
+  fd
+  fish
+  fzf
+  git
+  starship
+  zoxide
+)
+
+casks=(
+  homebrew/cask-drivers/logi-options-plus
+  1password
+  affinity-photo
+  bartender
+  discord
+  docker
+  figma
+  firefox
+  google-chrome
+  iterm2
+  notion
+  polypane
+  postman
+  raycast
+  tableplus
+  tweetbot
+  visual-studio-code
+)
+
+{{ if eq .profile "personal" }}
+  casks+=(
+    elmedia-player
+  )
+{{ else if eq .profile "work" }}
+  casks+=(
+    microsoft-teams
+    openvpn-connect
+    slack
+  )
+{{ end }}
+
+brew install ${formulae[@]}
+brew install --cask --no-quarantine ${casks[@]}
+brew cleanup --prune=all
+
+# Install Logi Options+
+open /opt/homebrew/Caskroom/logi-options-plus/latest/logioptionsplus_installer.app
+
+# Add fish to the list of known shells and set it as the default shell
+sudo sh -c 'echo /opt/homebrew/bin/fish >> /etc/shells' && set -U fish_user_paths /opt/homebrew/bin/fish $fish_user_paths
+chsh -s /opt/homebrew/bin/fish
